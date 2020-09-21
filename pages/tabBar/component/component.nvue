@@ -1,0 +1,107 @@
+<template>
+	<view class="uni-container">
+		<view class="uni-title uni-common-pl">税务信息填写</view>
+		<view class="uni-list" v-for="(item,index) in datas">
+			<picker mode='date' fields='month' @change="openCanlan(index,$event)">
+				<text>月份:{{item.zxDate}}</text>
+			</picker>
+			<view style="margin-top: 10rpx;"  v-if="index!=0">
+				<text>所得项目小类:</text>
+				<input type='text' v-model="item.sdlxx" class='uni-input' />
+			</view>
+			<view>
+				<text>扣缴义务人:</text>
+				<input type='text' v-model="item.kjywr" class='uni-input' />
+			</view>
+			<view>
+				<text>收入:</text>
+				<input type='digit' v-model="item.sr" class='uni-input' placeholder="小数点需要自己输入" />
+			</view>
+			<view>
+				<text>已申报税额:</text>
+				<input type='digit' v-model="item.ysb" class='uni-input' placeholder="小数点需要自己输入" />
+			</view>
+		</view>
+		<button style="width: 100rpx;" @click="save">保存</button>
+		<button style="width: 200rpx;" @click="addFnc">继续添加</button>
+		<button style="width: 200rpx;" @click="removeFnc">移除</button>
+	</view>
+</template>
+<script>
+	export default {
+		data() {
+			return {
+				time: '',
+				index: 0,
+				datas: [{
+					zxDate: '2020-09',
+					sdlxx: '正常工资薪金',
+					kjywr: '',
+					sr: '0',
+					ysb: '0'
+				}]
+
+
+			}
+		},
+		onShow(){
+			uni.getStorage({
+				key: 'storage_key',
+				success: (res) => {
+					this.datas = res.data
+					console.log(res.data);
+				}
+			});
+		},
+		methods: {
+			openCanlan(...e) {
+				this.datas[e[0]].zxDate = e[1].detail.value
+			},
+			addFnc() {
+				let item = {
+					zxDate: '2020-09',
+					sdlxx: '正常工资薪金',
+					kjywr: '',
+					sr: '',
+					ysb: ''
+				};
+				this.datas.push(item);
+			},
+			save() {
+				uni.setStorage({
+					key: 'storage_key',
+					data: this.datas,
+					success: function() {
+						console.log('success');
+					}
+				});
+			},
+			removeFnc(){
+				if(this.datas.length>1){
+					 this.datas.pop();
+					 this.save();
+				}
+				
+			}
+
+		}
+	}
+</script>
+
+<style>
+	@import '../../../common/uni-nvue.css';
+
+	.uni-input {
+		height: 100rpx;
+		padding: 15rpx 25rpx;
+		line-height: 80rpx;
+		font-size: 28rpx;
+		background-color: #FFF;
+	}
+
+	.uni-list {
+		border-color: #000000;
+		border-width: 3rpx;
+		margin-top: 10rpx;
+	}
+</style>

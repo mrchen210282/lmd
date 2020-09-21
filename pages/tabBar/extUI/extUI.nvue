@@ -1,0 +1,53 @@
+<template>
+	<view class="lmd-grzx">
+		<view style="height: 80rpx;background-color: #000000;"></view>
+		<view style="position: fixed;top:160rpx;left: 200rpx;">
+			<text class="fd-grzx-text">{{name}}</text>
+			<text class="fd-grzx-text" style="margin-top: 20rpx;">{{phone | chuli}}</text>
+		</view>
+
+		<image src="../../../static/grzxn.png" mode='widthFix' style="height: 1400rpx;" v-if="flag"/>
+		<image src="../../../static/grzx2.jpg" mode='widthFix' style="height: 1400rpx;"  v-else/>
+	</view>
+</template>
+<script>
+	export default {
+		data() {
+			return {
+				name: this.$store.getters.getUserInfo.name,
+				phone: this.$store.getters.getUserInfo.phone,
+				flag:true
+			}
+		},
+		filters:{
+			chuli(val){
+				return `${val.substr(0,3)}****${val.substr(7,4)}`
+			}
+		},
+		onShow() {
+			this.name = this.$store.getters.getUserInfo.name;
+			this.phone = this.$store.getters.getUserInfo.phone;
+			this.flag = this.$store.getters.getUserInfo.sex === '1'?false:true;
+		},
+		methods: {
+			goDetailPage(path) {
+				uni.navigateTo({
+					url: '/pages/extUI/' + path + '/' + path
+				});
+			}
+		}
+	}
+</script>
+
+<style>
+	@import '../../../common/uni-nvue.css';
+
+	.lmd-grzx {
+		margin-top: 0;
+	}
+
+	.fd-grzx-text {
+		color: #FFFFFF;
+		font-size: 30rpx;
+	}
+</style>
