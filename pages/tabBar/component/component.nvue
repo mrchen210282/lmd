@@ -1,11 +1,11 @@
 <template>
-	<view class="uni-container">
-		<view class="uni-title uni-common-pl">税务信息填写</view>
+	<view class="uni-container" style="font-size: 12rpx;">
+		<view class="uni-title uni-common-pl" style="font-size: 12rpx;">税务信息填写</view>
 		<view class="uni-list" v-for="(item,index) in datas">
 			<picker mode='date' fields='month' @change="openCanlan(index,$event)">
 				<text>月份:{{item.zxDate}}</text>
 			</picker>
-			<view style="margin-top: 10rpx;"  v-if="index!=0">
+			<view style="margin-top: 10rpx;">
 				<text>所得项目小类:</text>
 				<input type='text' v-model="item.sdlxx" class='uni-input' />
 			</view>

@@ -79,9 +79,10 @@
             "orientation" : [ "portrait-primary" ],
             "icons" : {
                 "android" : {
-                    "hdpi" : "C:/Users/37645/Downloads/app_87.684647302905px_1258061_easyicon.net.png",
-                    "xhdpi" : "C:/Users/37645/Downloads/app_116.91286307054px_1258061_easyicon.net.png",
-                    "xxhdpi" : "C:/Users/37645/Downloads/app_155.88381742739px_1258061_easyicon.net.png"
+                    "hdpi" : "C:/Users/37645/Desktop/gouzi.png",
+                    "xhdpi" : "C:/Users/37645/Desktop/gouzi.png",
+                    "xxhdpi" : "C:/Users/37645/Desktop/gouzi.png",
+                    "xxxhdpi" : "C:/Users/37645/Desktop/gouzi.png"
                 }
             }
         },

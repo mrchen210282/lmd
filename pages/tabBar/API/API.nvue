@@ -22,23 +22,26 @@
 
 		</view>
 		<view v-if="queryFlag">
-			<view style="height: 15rpx;background-color: #000000;width: 750rpx;"></view>
-			<view style="z-index:9;width: 750rpx;">
-				<text style="position: fixed;top: 210rpx;right: 30rpx;font-size: 30rpx;z-index:10;">{{getsum1}}.00 元</text>
-				<text style="position: fixed;top: 290rpx;right: 30rpx;font-size: 30rpx;z-index:10;">{{getsum2}}.00 元</text>
+			<view style="height: 100rpx;background-color: #000000;width: 750rpx;position: fixed;top:0;z-index:999;"></view>
+			<view style="z-index:9;width: 750rpx;position: fixed;top:15rpx;">
+				<text style="position: fixed;top: 210rpx;right: 30rpx;font-size: 30rpx;z-index:10;">{{getsum1}} 元</text>
+				<text style="position: fixed;top: 290rpx;right: 30rpx;font-size: 30rpx;z-index:10;">{{getsum2}} 元</text>
 				<image src='../../../static/query1.jpg' mode='widthFix' style="height: 160rpx;" @click="returnQuery" />
 				<image src='../../../static/query2.jpg' mode='widthFix' style="height: 200rpx;" />
 			</view>
 			<image src='../../../static/load.jpg' v-if="loadingFLag" mode="widthFix" style="position: fixed;top: 600rpx;left: 200rpx; height: 250rpx;width: 300rpx;" />
-			<view v-else v-for="(item,index) in xzxxDatas" :key='index' style="position: relative;height: 330rpx;background-color: #FFFFFF;margin-top: 22rpx;padding-left: 25px;">
-				<view class="big"></view>
-				<text style="color: #323233;margin-top: 35rpx;font-size: 32rpx;">工资薪金</text>
-				<text style="color: #323233;margin-top: 35rpx;font-size: 32rpx;position:absolute;right: 100rpx;">{{item.zxDate}}</text>
-				<text style="color: #AAAAAA;margin-top: 15rpx;font-size: 28rpx;">所得项目小类: {{item.sdlxx}}</text>
-				<text style="color: #AAAAAA;margin-top: 15rpx;font-size: 28rpx;">扣缴义务人: {{item.kjywr | clwz}}</text>
-				<text style="color: #AAAAAA;margin-top: 15rpx;font-size: 28rpx;">收入: {{item.sr}}元</text>
-				<text style="color: #AAAAAA;margin-top: 15rpx;font-size: 28rpx;">已申报税额: {{item.ysb}}元</text>
+			<view v-else style="margin-top: 370rpx;">
+				<view v-for="(item,index) in xzxxDatas" :key='index' style="height: 330rpx;background-color: #FFFFFF;margin-top: 22rpx;padding-left: 25px;">
+					<view class="big"></view>
+					<text style="color: #323233;margin-top: 35rpx;font-size: 32rpx;">工资薪金</text>
+					<text style="color: #323233;margin-top: 35rpx;font-size: 32rpx;position:absolute;right: 100rpx;">{{item.zxDate}}</text>
+					<text style="color: #AAAAAA;margin-top: 15rpx;font-size: 28rpx;">所得项目小类: {{item.sdlxx}}</text>
+					<text style="color: #AAAAAA;margin-top: 15rpx;font-size: 28rpx;">扣缴义务人: {{item.kjywr | clwz}}</text>
+					<text style="color: #AAAAAA;margin-top: 15rpx;font-size: 28rpx;">收入: {{item.sr | menoy}}元</text>
+					<text style="color: #AAAAAA;margin-top: 15rpx;font-size: 28rpx;">已申报税额: {{item.ysb | menoy}}元</text>
+				</view>
 			</view>
+			
 		</view>
 		<lb-picker ref="picker1" v-model="value1" mode="selector" :list="list2" @change="openCanlan" @confirm="handleConfirm"
 		 @cancel="handleCancel" column-num='9'>
@@ -65,7 +68,7 @@
 		},
 		data() {
 			return {
-				value1: '2020',
+				value1: '',
 				value2: '',
 				picture: '',
 				showFlag: true,
@@ -87,22 +90,25 @@
 					return val;
 				}
 
+			},
+			menoy(val){
+				return parseFloat(val).toFixed(2);
 			}
 		},
 		computed: {
 			getsum1() {
 				let sum1 = 0;
 				this.xzxxDatas.forEach(item => {
-					sum1 += parseInt(item.sr)
+					sum1 += parseFloat(item.sr)
 				})
-				return sum1;
+				return sum1.toFixed(2);
 			},
 			getsum2() {
 				let sum1 = 0;
 				this.xzxxDatas.forEach(item => {
-					sum1 += parseInt(item.ysb)
+					sum1 += parseFloat(item.ysb)
 				})
-				return sum1;
+				return sum1.toFixed(2);
 			}
 		},
 
@@ -110,7 +116,12 @@
 			jumpNs() {
 				uni.hideTabBar();
 				this.showFlag = false;
-				this.showFlagtz = true;
+				setTimeout(()=>{
+					this.showFlagtz = true;
+				},200)
+				setTimeout(()=>{
+					this.value1 = '2020';
+				},200)
 			},
 			jumpSy() {
 				uni.showTabBar();
@@ -127,7 +138,6 @@
 				this.value1 = this.value2;
 			},
 			handleCancel() {
-				console.log(22222)
 			},
 			query() {
 				this.showFlag = false;
@@ -137,7 +147,11 @@
 				uni.getStorage({
 					key: 'storage_key',
 					success: (res) => {
-						this.xzxxDatas = res.data
+						this.xzxxDatas = res.data.filter((year)=>{
+							return new Date(year.zxDate).getFullYear() == this.value1;
+						})
+						
+						//this.xzxxDatas = res.data
 						console.log(res.data);
 					}
 				});
