@@ -105,6 +105,7 @@ if (typeof Promise !== 'undefined' && !Promise.prototype.finally) {
     )
   }
 }
+
 if(uni.restoreGlobal){
   uni.restoreGlobal(weex,plus,setTimeout,clearTimeout,setInterval,clearInterval)
 }

@@ -1,51 +1,42 @@
 <template>
-	<view>
-		<view v-if="showFlag" style="background-color: #000000;">
-			<view style="position: fixed;top: -20rpx;z-index:9;width: 750rpx;">
-				<image v-if="scollFlag" src='../../../static/sy1.jpg' mode='widthFix' style="height: 200rpx;" />
-				<view v-if="!scollFlag" style="width: 750rpx;background-color: #000000;height: 25rpx;"></view>
-				<image v-if="!scollFlag" src='../../../static/sy9.jpg' mode='widthFix' style="height: 185rpx;" />
-			</view>
-			<view style="margin-top: 175rpx;">
-				<image src='../../../static/sy2.jpg' mode='widthFix' style="height: 1200rpx;" />
-				<image src='../../../static/sy3.jpg' mode='widthFix' style="height: 160rpx;" />
-				<image src='../../../static/sy4.jpg' mode='widthFix' style="height: 160rpx;" @click="jumpNs" />
-				<image src='../../../static/sy5.jpg' mode='widthFix' style="height: 1200rpx;" />
-			</view>
-		</view>
-		<view v-if="showFlagtz">
-			<view style="height: 15rpx;background-color: #000000;width: 750rpx;"></view>
-			<image src='../../../static/tz1.jpg' mode='widthFix' style="height: 170rpx;" @click="jumpSy" />
-			<text style="position: fixed;top: 320rpx;left: 280rpx; font-size: 30rpx;z-index:999;">{{value1}}</text>
-			<image src='../../../static/tz2.jpg' mode='widthFix' style="height: 210rpx;z-index: 1;" @click="openPicker" />
-			<image src='../../../static/tz3.jpg' mode='widthFix' style="height: 950rpx;" @click="query" />
-
-		</view>
-		<view v-if="queryFlag">
-			<view style="height: 100rpx;background-color: #000000;width: 750rpx;position: fixed;top:0;z-index:999;"></view>
-			<view style="z-index:9;width: 750rpx;position: fixed;top:15rpx;">
-				<text style="position: fixed;top: 210rpx;right: 30rpx;font-size: 30rpx;z-index:10;">{{getsum1}} 元</text>
-				<text style="position: fixed;top: 290rpx;right: 30rpx;font-size: 30rpx;z-index:10;">{{getsum2}} 元</text>
-				<image src='../../../static/query1.jpg' mode='widthFix' style="height: 160rpx;" @click="returnQuery" />
-				<image src='../../../static/query2.jpg' mode='widthFix' style="height: 200rpx;" />
-			</view>
-			<image src='../../../static/load.jpg' v-if="loadingFLag" mode="widthFix" style="position: fixed;top: 600rpx;left: 200rpx; height: 250rpx;width: 300rpx;" />
-			<view v-else style="margin-top: 370rpx;">
-				<view v-for="(item,index) in xzxxDatas" :key='index' style="height: 330rpx;background-color: #FFFFFF;margin-top: 22rpx;padding-left: 25px;">
-					<view class="big"></view>
-					<text style="color: #323233;margin-top: 35rpx;font-size: 32rpx;">工资薪金</text>
-					<text style="color: #323233;margin-top: 35rpx;font-size: 32rpx;position:absolute;right: 100rpx;">{{item.zxDate}}</text>
-					<text style="color: #AAAAAA;margin-top: 15rpx;font-size: 28rpx;">所得项目小类: {{item.sdlxx}}</text>
-					<text style="color: #AAAAAA;margin-top: 15rpx;font-size: 28rpx;">扣缴义务人: {{item.kjywr | clwz}}</text>
-					<text style="color: #AAAAAA;margin-top: 15rpx;font-size: 28rpx;">收入: {{item.sr | menoy}}元</text>
-					<text style="color: #AAAAAA;margin-top: 15rpx;font-size: 28rpx;">已申报税额: {{item.ysb | menoy}}元</text>
+	<view style="z-index: 1;">
+		<view :style="{ height: iStatusBarHeight + 'px'}" style="background-color: #000000;"></view>
+		<view v-if="myFlag">
+			<view style="z-index: 1;">
+				<image src="/static/zfb/sy1.jpg" mode='widthFix' style="height: 330rpx;z-index: 1;" />
+				<image v-if="!showMoneyFlag" src="/static/zfb/sy2.jpg" mode='widthFix' style="height: 100rpx;" @click="showMoney" />
+				<view v-else style="position: fixed;top: 280rpx;left: 200rpx;z-index: 9999;" @click="showMoney">
+					<view>
+						<text style="color: #FFFFFF;font-size: 100rpx;">{{allMoney}}</text>
+						<image src="/static/zfb/eyes.png" mode="aspectFit" style="width: 150rpx;position: relative;top: -275rpx;right: -300rpx;z-index:99;">
+					</view>
 				</view>
+				<image src="/static/zfb/sy3.jpg" mode='widthFix' style="height: 1200rpx;position: relative;top: -25rpx;" />
 			</view>
-			
+			<view style="position:relative ;top: -1200rpx;left: 180rpx;">
+				<text style="color: #FFFFFF;font-size: 26rpx;">{{name}}</text>
+			</view>
+			<view style="position:relative ;top: -1230rpx;left: 270rpx;">
+				<text style="color: #FFFFFF;font-size: 26rpx;">{{obj2.bh}}</text>
+			</view>
+			<view style="position:relative ;top: -1010rpx;left: 66rpx;">
+				<text style="color: #a19da1;font-size: 23rpx;">最近缴存{{date}}</text>
+			</view>
+			<view style="position:relative ;top: -1004rpx;left: 66rpx;" @click="myMoney">
+				<text style="color: #a19da1;font-size: 40rpx;">{{money}}</text>
+			</view>
 		</view>
-		<lb-picker ref="picker1" v-model="value1" mode="selector" :list="list2" @change="openCanlan" @confirm="handleConfirm"
-		 @cancel="handleCancel" column-num='9'>
-		</lb-picker>
+		<view v-else>
+			<image src="/static/zfb/sy5.jpg" mode='widthFix' style="height: 1600rpx;" @click="myMoney" />
+			<text style="color: #FFFFFF;position: fixed;top: 110rpx;left: 100rpx;">{{name}}的账户</text>
+			<text style="color: #FFFFFF;position: fixed;top: 220rpx;left: 95rpx;font-size: 50rpx;">{{allMoney}}</text>
+			<text style="color: #FFFFFF;position: fixed;top: 220rpx;left: 465rpx;font-size: 50rpx;">{{getMonthMoney}}</text>
+			<text style="position: fixed;top: 530rpx;right: 20rpx;font-size: 34rpx;">{{obj2.bh}}</text>
+			<text style="position: fixed;top: 600rpx;right: 20rpx;font-size: 34rpx;">{{obj2.dwname}}</text>
+			<text style="position: fixed;top: 675rpx;right: 20rpx;font-size: 34rpx;">{{obj2.mc}}</text>
+		</view>
+
+
 
 	</view>
 
@@ -53,117 +44,60 @@
 
 </template>
 <script>
-	import LbPicker from '@/components/lb-picker';
-
 	export default {
 		components: {
-			LbPicker
+
 		},
-		onPageScroll(e){
-			/* if(e.scrollTop > 120){
-				this.scollFlag = true;
-			}else{
-				this.scollFlag = false;
-			} */
+		onLoad() {
+			this.iStatusBarHeight = uni.getSystemInfoSync().statusBarHeight;
+			uni.hideTabBar();
 		},
 		data() {
 			return {
-				value1: '',
-				value2: '',
-				picture: '',
-				showFlag: true,
-				pickFlag: false,
-				queryFlag: false,
-				loadingFLag: false,
-				list2: ['2019', '2020'],
-				showFlagtz: false,
-				xzxxDatas: [],
-				scollFlag: false
-
+				iStatusBarHeight: 0,
+				name: '*美丹',
+				date: '2020-06-30',
+				money: '129.6',
+				allMoney: '9,785.92',
+				showMoneyFlag: false,
+				myFlag: false,
+				obj: {
+					jcjs: '2500.00',
+					grbl: '12.00%',
+					dwbl: '12.00%',
+					grMoney: '300.00',
+					dwMoney: '300.00',
+					sn: '9856.23',
+					bn: '0.00',
+					bn2: '0.00',
+				},
+				obj2:{
+					bh:'GJJJJJJJ0000000000017255',
+					dwname:'xxxxxxx有限公司',
+					mc:'朝阳管理部'
+					
+				}
 			}
 		},
 		filters: {
-			clwz(val) {
-				if (val.length > 11) {
-					return val.substr(0, 11) + '...'
-				} else {
-					return val;
-				}
 
-			},
-			menoy(val){
-				return parseFloat(val).toFixed(2);
-			}
 		},
 		computed: {
-			getsum1() {
-				let sum1 = 0;
-				this.xzxxDatas.forEach(item => {
-					sum1 += parseFloat(item.sr)
-				})
-				return sum1.toFixed(2);
-			},
-			getsum2() {
-				let sum1 = 0;
-				this.xzxxDatas.forEach(item => {
-					sum1 += parseFloat(item.ysb)
-				})
-				return sum1.toFixed(2);
+			getMonthMoney() {
+				return (parseFloat(this.obj.grMoney) + parseFloat(this.obj.dwMoney)).toFixed(2);
 			}
 		},
-
 		methods: {
-			jumpNs() {
-				uni.hideTabBar();
-				this.showFlag = false;
-				setTimeout(()=>{
-					this.showFlagtz = true;
-				},200)
-				setTimeout(()=>{
-					this.value1 = '2020';
-				},200)
+			showMoney() {
+				this.showMoneyFlag = !this.showMoneyFlag;
+
 			},
-			jumpSy() {
-				uni.showTabBar();
-				this.showFlag = true;
-				this.showFlagtz = false;
-			},
-			openPicker() {
-				this.$refs.picker1.show();
-			},
-			openCanlan(e) {
-				this.value2 = e.value;
-			},
-			handleConfirm() {
-				this.value1 = this.value2;
-			},
-			handleCancel() {
-			},
-			query() {
-				this.showFlag = false;
-				this.showFlagtz = false;
-				this.queryFlag = true;
-				this.loadingFLag = true;
-				uni.getStorage({
-					key: 'storage_key',
-					success: (res) => {
-						this.xzxxDatas = res.data.filter((year)=>{
-							return new Date(year.zxDate).getFullYear() == this.value1;
-						})
-						
-						//this.xzxxDatas = res.data
-						console.log(res.data);
-					}
-				});
-				setTimeout(() => {
-					this.loadingFLag = false;
-				}, 500)
-			},
-			returnQuery() {
-				this.showFlag = false;
-				this.showFlagtz = true;
-				this.queryFlag = false;
+			myMoney() {
+				this.myFlag = !this.myFlag;
+
 			}
+
+
 
 		}
 	};
@@ -171,19 +105,4 @@
 
 <style>
 	@import '../../../common/uni-nvue.css';
-
-	.big {
-		width: 22rpx;
-		height: 22rpx;
-		position: absolute;
-		top: 153rpx;
-		right: 40rpx;
-		border-left-width: 3.5rpx;
-		border-left-color: #AAAAAA;
-		border-left-style: solid;
-		border-bottom-width: 3.5rpx;
-		border-bottom-color: #AAAAAA;
-		border-bottom-style: solid;
-		transform: translate(0, -50%) rotate(-135deg);
-	}
 </style>

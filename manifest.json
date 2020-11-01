@@ -1,5 +1,5 @@
 {
-    "name" : "lmd2",
+    "name" : "罗美丹支付宝",
     "appid" : "__UNI__7C7130E",
     "description" : "应用描述",
     "versionName" : "1.0.0",
@@ -9,7 +9,6 @@
     "app-plus" : {
         "usingComponents" : true,
         "compilerVersion" : 3,
-        "nvueLaunchMode" : "fast",
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
             "waiting" : true,
