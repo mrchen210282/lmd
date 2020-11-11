@@ -1,42 +1,51 @@
 <template>
-	<view style="z-index: 1;">
+	<view style="z-index: 1;width:100%;height:100vh">
 		<view :style="{ height: iStatusBarHeight + 'px'}" style="background-color: #000000;"></view>
 		<view v-if="myFlag">
-			<view style="z-index: 1;">
-				<image src="/static/zfb/sy1.jpg" mode='widthFix' style="height: 330rpx;z-index: 1;" />
-				<image v-if="!showMoneyFlag" src="/static/zfb/sy2.jpg" mode='widthFix' style="height: 100rpx;" @click="showMoney" />
-				<view v-else style="position: fixed;top: 280rpx;left: 200rpx;z-index: 9999;" @click="showMoney">
+			<view style="z-index: 1;background-color: #2ca3fd;">
+				<image v-if="!showMoneyFlag" src="/static/zfb/hidemoney.jpg" mode='widthFix' @click="showMoney" style="height: 330rpx;"/>
+				<image v-if="showMoneyFlag" src="/static/zfb/sy1.jpg" mode='widthFix' style="height: 330rpx;" />
+				<view v-if="showMoneyFlag" class="zfb-showmoney" @click="showMoney" >
 					<view>
 						<text style="color: #FFFFFF;font-size: 100rpx;">{{allMoney}}</text>
-						<image src="/static/zfb/eyes.png" mode="aspectFit" style="width: 150rpx;position: relative;top: -275rpx;right: -300rpx;z-index:99;">
+						<image src="/static/zfb/eyes.png" mode="aspectFit" class="zfb-showmoney-image" />
 					</view>
 				</view>
-				<image src="/static/zfb/sy3.jpg" mode='widthFix' style="height: 1200rpx;position: relative;top: -25rpx;" />
+				<image src="/static/zfb/sy3.jpg" mode='widthFix' style="height: 1200rpx;position: relative;top: -25rpx;" @click="ckzhxx" />
 			</view>
-			<view style="position:relative ;top: -1200rpx;left: 180rpx;">
+			<view style="position:relative ;top: -1225rpx;left: 180rpx;">
 				<text style="color: #FFFFFF;font-size: 26rpx;">{{name}}</text>
 			</view>
-			<view style="position:relative ;top: -1230rpx;left: 270rpx;">
+			<view style="position:relative ;top: -1253rpx;left: 270rpx;">
 				<text style="color: #FFFFFF;font-size: 26rpx;">{{obj2.bh}}</text>
 			</view>
-			<view style="position:relative ;top: -1010rpx;left: 66rpx;">
+			<view style="position:relative ;top: -1025rpx;left: 66rpx;">
 				<text style="color: #a19da1;font-size: 23rpx;">最近缴存{{date}}</text>
 			</view>
-			<view style="position:relative ;top: -1004rpx;left: 66rpx;" @click="myMoney">
+			<view style="position:relative ;top: -1017rpx;left: 66rpx;" @click="gejcxx">
 				<text style="color: #a19da1;font-size: 40rpx;">{{money}}</text>
 			</view>
 		</view>
-		<view v-else>
+		<view v-if="myMoneyFlag">
 			<image src="/static/zfb/sy5.jpg" mode='widthFix' style="height: 1600rpx;" @click="myMoney" />
 			<text style="color: #FFFFFF;position: fixed;top: 110rpx;left: 100rpx;">{{name}}的账户</text>
 			<text style="color: #FFFFFF;position: fixed;top: 220rpx;left: 95rpx;font-size: 50rpx;">{{allMoney}}</text>
-			<text style="color: #FFFFFF;position: fixed;top: 220rpx;left: 465rpx;font-size: 50rpx;">{{getMonthMoney}}</text>
-			<text style="position: fixed;top: 530rpx;right: 20rpx;font-size: 34rpx;">{{obj2.bh}}</text>
-			<text style="position: fixed;top: 600rpx;right: 20rpx;font-size: 34rpx;">{{obj2.dwname}}</text>
-			<text style="position: fixed;top: 675rpx;right: 20rpx;font-size: 34rpx;">{{obj2.mc}}</text>
+			<text style="color: #FFFFFF;position: fixed;top: 220rpx;left: 465rpx;font-size: 50rpx;">{{parseFloat(obj2.gryjce) + parseFloat(obj2.dwyjce) | filterMoney}}</text>
+			<text style="position: fixed;top: 517rpx;right: 20rpx;font-size: 34rpx;">{{obj2.bh}}</text>
+			<text style="position: fixed;top: 585rpx;right: 20rpx;font-size: 34rpx;">{{obj2.dwname}}</text>
+			<text style="position: fixed;top: 657rpx;right: 20rpx;font-size: 34rpx;">{{obj2.mc}}</text>
+			<text style="position: fixed;top: 855rpx;right: 20rpx;font-size: 34rpx;">{{obj2.jcsalc | filterMoney}}</text>
+			<text style="position: fixed;top: 920rpx;right: 20rpx;font-size: 34rpx;">{{obj2.grbl}}</text>
+			<text style="position: fixed;top: 985rpx;right: 20rpx;font-size: 34rpx;">{{obj2.dwbl}}</text>
+			<text style="position: fixed;top: 1057rpx;right: 20rpx;font-size: 34rpx;">{{obj2.gryjce | filterMoney}}</text>
+			<text style="position: fixed;top: 1127rpx;right: 20rpx;font-size: 34rpx;">{{obj2.dwyjce | filterMoney}}</text>
+			<text style="position: fixed;top: 1195rpx;right: 20rpx;font-size: 34rpx;">{{obj2.snjze | filterMoney}}</text>
+			<text style="position: fixed;top: 1265rpx;right: 20rpx;font-size: 34rpx;">{{obj2.bnjce | filterMoney}}</text>
+			<text style="position: fixed;top: 1335rpx;right: 20rpx;font-size: 34rpx;">{{obj2.bnzqe | filterMoney}}</text>
 		</view>
-
-
+		<view v-if="mxFlag">
+			<image src="/static/zfb/mx1.jpg" mode='widthFix' @click="myMoney" style="height: 300rpx;"/>
+		</view>
 
 	</view>
 
@@ -59,8 +68,10 @@
 				date: '2020-06-30',
 				money: '129.6',
 				allMoney: '9,785.92',
+				myFlag: true,
 				showMoneyFlag: false,
-				myFlag: false,
+				mxFlag:false,
+				myMoneyFlag:false,
 				obj: {
 					jcjs: '2500.00',
 					grbl: '12.00%',
@@ -71,15 +82,26 @@
 					bn: '0.00',
 					bn2: '0.00',
 				},
-				obj2:{
-					bh:'GJJJJJJJ0000000000017255',
-					dwname:'xxxxxxx有限公司',
-					mc:'朝阳管理部'
-					
+				obj2: {
+					bh: 'GJJJJJJJ0000000000017255',
+					dwname: 'xxxxxxx有限公司',
+					mc: '朝阳管理部',
+					jcsalc:'2500.00',
+					grbl:'12.00%',
+					dwbl:'12.00%',
+					gryjce:'300.00',
+					dwyjce:'300.00',
+					snjze:'9785.92',
+					bnjce:'0.00',
+					bnzqe:'0.00',
+
 				}
 			}
 		},
 		filters: {
+			filterMoney(val){
+				return parseFloat(val).toFixed(2);
+			}
 
 		},
 		computed: {
@@ -93,8 +115,19 @@
 
 			},
 			myMoney() {
-				this.myFlag = !this.myFlag;
-
+				this.myFlag = true;
+				this.mxFlag = false;
+				this.myMoneyFlag = false;
+			},
+			ckzhxx(){
+				this.myFlag = false;
+				this.mxFlag = false;
+				this.myMoneyFlag = true;
+			},
+			gejcxx(){
+				this.myFlag = false;
+				this.mxFlag = true;
+				this.myMoneyFlag = false;
 			}
 
 
@@ -105,4 +138,21 @@
 
 <style>
 	@import '../../../common/uni-nvue.css';
+
+	.zfb-showmoney {
+		position: absolute;
+		top: 200rpx;
+		left: 180rpx;
+		width: 1000px;
+		z-index: 999;
+	}
+
+	.zfb-showmoney-image {
+		width: 150rpx;
+		position: absolute;
+		top: -165rpx;
+		left: 350rpx;
+		z-index: 1000;
+	}
+
 </style>

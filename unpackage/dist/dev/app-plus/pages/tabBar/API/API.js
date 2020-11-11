@@ -201,237 +201,363 @@ var render = function() {
       }
     },
     [
-      _c("view", { staticStyle: { zIndex: "1" } }, [
-        _c("view", {
-          staticStyle: { backgroundColor: "#000000" },
-          style: { height: _vm.iStatusBarHeight + "px" }
-        }),
-        _vm.myFlag
-          ? _c("view", [
-              _c(
-                "view",
-                { staticStyle: { zIndex: "1" } },
-                [
-                  _c("u-image", {
-                    staticStyle: { height: "330rpx", zIndex: "1" },
-                    attrs: { src: "/static/zfb/sy1.jpg", mode: "widthFix" }
-                  }),
-                  !_vm.showMoneyFlag
-                    ? _c("u-image", {
-                        staticStyle: { height: "100rpx" },
-                        attrs: { src: "/static/zfb/sy2.jpg", mode: "widthFix" },
-                        on: { click: _vm.showMoney }
-                      })
-                    : _c(
-                        "view",
-                        {
-                          staticStyle: {
-                            position: "fixed",
-                            top: "280rpx",
-                            left: "200rpx",
-                            zIndex: "9999"
+      _c(
+        "view",
+        { staticStyle: { zIndex: "1", width: "100%", height: "100vh" } },
+        [
+          _c("view", {
+            staticStyle: { backgroundColor: "#000000" },
+            style: { height: _vm.iStatusBarHeight + "px" }
+          }),
+          _vm.myFlag
+            ? _c("view", [
+                _c(
+                  "view",
+                  { staticStyle: { zIndex: "1", backgroundColor: "#2ca3fd" } },
+                  [
+                    !_vm.showMoneyFlag
+                      ? _c("u-image", {
+                          staticStyle: { height: "330rpx" },
+                          attrs: {
+                            src: "/static/zfb/hidemoney.jpg",
+                            mode: "widthFix"
                           },
                           on: { click: _vm.showMoney }
-                        },
-                        [
-                          _c(
-                            "view",
-                            [
-                              _c(
-                                "u-text",
-                                {
-                                  staticStyle: {
-                                    color: "#FFFFFF",
-                                    fontSize: "100rpx"
+                        })
+                      : _vm._e(),
+                    _vm.showMoneyFlag
+                      ? _c("u-image", {
+                          staticStyle: { height: "330rpx" },
+                          attrs: {
+                            src: "/static/zfb/sy1.jpg",
+                            mode: "widthFix"
+                          }
+                        })
+                      : _vm._e(),
+                    _vm.showMoneyFlag
+                      ? _c(
+                          "view",
+                          {
+                            staticClass: ["zfb-showmoney"],
+                            on: { click: _vm.showMoney }
+                          },
+                          [
+                            _c(
+                              "view",
+                              [
+                                _c(
+                                  "u-text",
+                                  {
+                                    staticStyle: {
+                                      color: "#FFFFFF",
+                                      fontSize: "100rpx"
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(_vm.allMoney))]
+                                ),
+                                _c("u-image", {
+                                  staticClass: ["zfb-showmoney-image"],
+                                  attrs: {
+                                    src: "/static/zfb/eyes.png",
+                                    mode: "aspectFit"
                                   }
-                                },
-                                [_vm._v(_vm._s(_vm.allMoney))]
-                              ),
-                              _c("u-image", {
-                                staticStyle: {
-                                  width: "150rpx",
-                                  position: "relative",
-                                  top: "-275rpx",
-                                  right: "-300rpx",
-                                  zIndex: "99"
-                                },
-                                attrs: {
-                                  src: "/static/zfb/eyes.png",
-                                  mode: "aspectFit"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ]
-                      ),
-                  _c("u-image", {
+                                })
+                              ],
+                              1
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _c("u-image", {
+                      staticStyle: {
+                        height: "1200rpx",
+                        position: "relative",
+                        top: "-25rpx"
+                      },
+                      attrs: { src: "/static/zfb/sy3.jpg", mode: "widthFix" },
+                      on: { click: _vm.ckzhxx }
+                    })
+                  ],
+                  1
+                ),
+                _c(
+                  "view",
+                  {
                     staticStyle: {
-                      height: "1200rpx",
                       position: "relative",
-                      top: "-25rpx"
+                      top: "-1225rpx",
+                      left: "180rpx"
+                    }
+                  },
+                  [
+                    _c(
+                      "u-text",
+                      { staticStyle: { color: "#FFFFFF", fontSize: "26rpx" } },
+                      [_vm._v(_vm._s(_vm.name))]
+                    )
+                  ]
+                ),
+                _c(
+                  "view",
+                  {
+                    staticStyle: {
+                      position: "relative",
+                      top: "-1253rpx",
+                      left: "270rpx"
+                    }
+                  },
+                  [
+                    _c(
+                      "u-text",
+                      { staticStyle: { color: "#FFFFFF", fontSize: "26rpx" } },
+                      [_vm._v(_vm._s(_vm.obj2.bh))]
+                    )
+                  ]
+                ),
+                _c(
+                  "view",
+                  {
+                    staticStyle: {
+                      position: "relative",
+                      top: "-1025rpx",
+                      left: "66rpx"
+                    }
+                  },
+                  [
+                    _c(
+                      "u-text",
+                      { staticStyle: { color: "#a19da1", fontSize: "23rpx" } },
+                      [_vm._v("最近缴存" + _vm._s(_vm.date))]
+                    )
+                  ]
+                ),
+                _c(
+                  "view",
+                  {
+                    staticStyle: {
+                      position: "relative",
+                      top: "-1017rpx",
+                      left: "66rpx"
                     },
-                    attrs: { src: "/static/zfb/sy3.jpg", mode: "widthFix" }
+                    on: { click: _vm.gejcxx }
+                  },
+                  [
+                    _c(
+                      "u-text",
+                      { staticStyle: { color: "#a19da1", fontSize: "40rpx" } },
+                      [_vm._v(_vm._s(_vm.money))]
+                    )
+                  ]
+                )
+              ])
+            : _vm._e(),
+          _vm.myMoneyFlag
+            ? _c(
+                "view",
+                [
+                  _c("u-image", {
+                    staticStyle: { height: "1600rpx" },
+                    attrs: { src: "/static/zfb/sy5.jpg", mode: "widthFix" },
+                    on: { click: _vm.myMoney }
+                  }),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        color: "#FFFFFF",
+                        position: "fixed",
+                        top: "110rpx",
+                        left: "100rpx"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.name) + "的账户")]
+                  ),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        color: "#FFFFFF",
+                        position: "fixed",
+                        top: "220rpx",
+                        left: "95rpx",
+                        fontSize: "50rpx"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.allMoney))]
+                  ),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        color: "#FFFFFF",
+                        position: "fixed",
+                        top: "220rpx",
+                        left: "465rpx",
+                        fontSize: "50rpx"
+                      }
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(
+                          _vm._f("filterMoney")(
+                            parseFloat(_vm.obj2.gryjce) +
+                              parseFloat(_vm.obj2.dwyjce)
+                          )
+                        )
+                      )
+                    ]
+                  ),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        position: "fixed",
+                        top: "517rpx",
+                        right: "20rpx",
+                        fontSize: "34rpx"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.obj2.bh))]
+                  ),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        position: "fixed",
+                        top: "585rpx",
+                        right: "20rpx",
+                        fontSize: "34rpx"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.obj2.dwname))]
+                  ),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        position: "fixed",
+                        top: "657rpx",
+                        right: "20rpx",
+                        fontSize: "34rpx"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.obj2.mc))]
+                  ),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        position: "fixed",
+                        top: "855rpx",
+                        right: "20rpx",
+                        fontSize: "34rpx"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm._f("filterMoney")(_vm.obj2.jcsalc)))]
+                  ),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        position: "fixed",
+                        top: "920rpx",
+                        right: "20rpx",
+                        fontSize: "34rpx"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.obj2.grbl))]
+                  ),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        position: "fixed",
+                        top: "985rpx",
+                        right: "20rpx",
+                        fontSize: "34rpx"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.obj2.dwbl))]
+                  ),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        position: "fixed",
+                        top: "1057rpx",
+                        right: "20rpx",
+                        fontSize: "34rpx"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm._f("filterMoney")(_vm.obj2.gryjce)))]
+                  ),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        position: "fixed",
+                        top: "1127rpx",
+                        right: "20rpx",
+                        fontSize: "34rpx"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm._f("filterMoney")(_vm.obj2.dwyjce)))]
+                  ),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        position: "fixed",
+                        top: "1195rpx",
+                        right: "20rpx",
+                        fontSize: "34rpx"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm._f("filterMoney")(_vm.obj2.snjze)))]
+                  ),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        position: "fixed",
+                        top: "1265rpx",
+                        right: "20rpx",
+                        fontSize: "34rpx"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm._f("filterMoney")(_vm.obj2.bnjce)))]
+                  ),
+                  _c(
+                    "u-text",
+                    {
+                      staticStyle: {
+                        position: "fixed",
+                        top: "1335rpx",
+                        right: "20rpx",
+                        fontSize: "34rpx"
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm._f("filterMoney")(_vm.obj2.bnzqe)))]
+                  )
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm.mxFlag
+            ? _c(
+                "view",
+                [
+                  _c("u-image", {
+                    staticStyle: { height: "300rpx" },
+                    attrs: { src: "/static/zfb/mx1.jpg", mode: "widthFix" },
+                    on: { click: _vm.myMoney }
                   })
                 ],
                 1
-              ),
-              _c(
-                "view",
-                {
-                  staticStyle: {
-                    position: "relative",
-                    top: "-1200rpx",
-                    left: "180rpx"
-                  }
-                },
-                [
-                  _c(
-                    "u-text",
-                    { staticStyle: { color: "#FFFFFF", fontSize: "26rpx" } },
-                    [_vm._v(_vm._s(_vm.name))]
-                  )
-                ]
-              ),
-              _c(
-                "view",
-                {
-                  staticStyle: {
-                    position: "relative",
-                    top: "-1230rpx",
-                    left: "270rpx"
-                  }
-                },
-                [
-                  _c(
-                    "u-text",
-                    { staticStyle: { color: "#FFFFFF", fontSize: "26rpx" } },
-                    [_vm._v(_vm._s(_vm.obj2.bh))]
-                  )
-                ]
-              ),
-              _c(
-                "view",
-                {
-                  staticStyle: {
-                    position: "relative",
-                    top: "-1010rpx",
-                    left: "66rpx"
-                  }
-                },
-                [
-                  _c(
-                    "u-text",
-                    { staticStyle: { color: "#a19da1", fontSize: "23rpx" } },
-                    [_vm._v("最近缴存" + _vm._s(_vm.date))]
-                  )
-                ]
-              ),
-              _c(
-                "view",
-                {
-                  staticStyle: {
-                    position: "relative",
-                    top: "-1004rpx",
-                    left: "66rpx"
-                  },
-                  on: { click: _vm.myMoney }
-                },
-                [
-                  _c(
-                    "u-text",
-                    { staticStyle: { color: "#a19da1", fontSize: "40rpx" } },
-                    [_vm._v(_vm._s(_vm.money))]
-                  )
-                ]
               )
-            ])
-          : _c(
-              "view",
-              [
-                _c("u-image", {
-                  staticStyle: { height: "1600rpx" },
-                  attrs: { src: "/static/zfb/sy5.jpg", mode: "widthFix" },
-                  on: { click: _vm.myMoney }
-                }),
-                _c(
-                  "u-text",
-                  {
-                    staticStyle: {
-                      color: "#FFFFFF",
-                      position: "fixed",
-                      top: "110rpx",
-                      left: "100rpx"
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.name) + "的账户")]
-                ),
-                _c(
-                  "u-text",
-                  {
-                    staticStyle: {
-                      color: "#FFFFFF",
-                      position: "fixed",
-                      top: "220rpx",
-                      left: "95rpx",
-                      fontSize: "50rpx"
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.allMoney))]
-                ),
-                _c(
-                  "u-text",
-                  {
-                    staticStyle: {
-                      color: "#FFFFFF",
-                      position: "fixed",
-                      top: "220rpx",
-                      left: "465rpx",
-                      fontSize: "50rpx"
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.getMonthMoney))]
-                ),
-                _c(
-                  "u-text",
-                  {
-                    staticStyle: {
-                      position: "fixed",
-                      top: "530rpx",
-                      right: "20rpx",
-                      fontSize: "34rpx"
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.obj2.bh))]
-                ),
-                _c(
-                  "u-text",
-                  {
-                    staticStyle: {
-                      position: "fixed",
-                      top: "600rpx",
-                      right: "20rpx",
-                      fontSize: "34rpx"
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.obj2.dwname))]
-                ),
-                _c(
-                  "u-text",
-                  {
-                    staticStyle: {
-                      position: "fixed",
-                      top: "675rpx",
-                      right: "20rpx",
-                      fontSize: "34rpx"
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.obj2.mc))]
-                )
-              ],
-              1
-            )
-      ])
+            : _vm._e()
+        ]
+      )
     ]
   )
 }
@@ -463,7 +589,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _HBu
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\nvar _default =\n{\n  components: {},\n\n\n  onLoad: function onLoad() {\n    this.iStatusBarHeight = uni.getSystemInfoSync().statusBarHeight;\n    uni.hideTabBar();\n  },\n  data: function data() {\n    return {\n      iStatusBarHeight: 0,\n      name: '*美丹',\n      date: '2020-06-30',\n      money: '129.6',\n      allMoney: '9,785.92',\n      showMoneyFlag: false,\n      myFlag: false,\n      obj: {\n        jcjs: '2500.00',\n        grbl: '12.00%',\n        dwbl: '12.00%',\n        grMoney: '300.00',\n        dwMoney: '300.00',\n        sn: '9856.23',\n        bn: '0.00',\n        bn2: '0.00' },\n\n      obj2: {\n        bh: 'GJJJJJJJ0000000000017255',\n        dwname: 'xxxxxxx有限公司',\n        mc: '朝阳管理部' } };\n\n\n\n  },\n  filters: {},\n\n\n  computed: {\n    getMonthMoney: function getMonthMoney() {\n      return (parseFloat(this.obj.grMoney) + parseFloat(this.obj.dwMoney)).toFixed(2);\n    } },\n\n  methods: {\n    showMoney: function showMoney() {\n      this.showMoneyFlag = !this.showMoneyFlag;\n\n    },\n    myMoney: function myMoney() {\n      this.myFlag = !this.myFlag;\n\n    } } };exports.default = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvdGFiQmFyL0FQSS9BUEkubnZ1ZSJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBOENBO0FBQ0EsZ0JBREE7OztBQUlBLFFBSkEsb0JBSUE7QUFDQTtBQUNBO0FBQ0EsR0FQQTtBQVFBLE1BUkEsa0JBUUE7QUFDQTtBQUNBLHlCQURBO0FBRUEsaUJBRkE7QUFHQSx3QkFIQTtBQUlBLG9CQUpBO0FBS0EsMEJBTEE7QUFNQSwwQkFOQTtBQU9BLG1CQVBBO0FBUUE7QUFDQSx1QkFEQTtBQUVBLHNCQUZBO0FBR0Esc0JBSEE7QUFJQSx5QkFKQTtBQUtBLHlCQUxBO0FBTUEscUJBTkE7QUFPQSxrQkFQQTtBQVFBLG1CQVJBLEVBUkE7O0FBa0JBO0FBQ0Esc0NBREE7QUFFQSw2QkFGQTtBQUdBLG1CQUhBLEVBbEJBOzs7O0FBeUJBLEdBbENBO0FBbUNBLGFBbkNBOzs7QUFzQ0E7QUFDQSxpQkFEQSwyQkFDQTtBQUNBO0FBQ0EsS0FIQSxFQXRDQTs7QUEyQ0E7QUFDQSxhQURBLHVCQUNBO0FBQ0E7O0FBRUEsS0FKQTtBQUtBLFdBTEEscUJBS0E7QUFDQTs7QUFFQSxLQVJBLEVBM0NBLEUiLCJmaWxlIjoiNzQuanMiLCJzb3VyY2VzQ29udGVudCI6WyI8dGVtcGxhdGU+XHJcblx0PHZpZXcgc3R5bGU9XCJ6LWluZGV4OiAxO1wiPlxyXG5cdFx0PHZpZXcgOnN0eWxlPVwieyBoZWlnaHQ6IGlTdGF0dXNCYXJIZWlnaHQgKyAncHgnfVwiIHN0eWxlPVwiYmFja2dyb3VuZC1jb2xvcjogIzAwMDAwMDtcIj48L3ZpZXc+XHJcblx0XHQ8dmlldyB2LWlmPVwibXlGbGFnXCI+XHJcblx0XHRcdDx2aWV3IHN0eWxlPVwiei1pbmRleDogMTtcIj5cclxuXHRcdFx0XHQ8aW1hZ2Ugc3JjPVwiL3N0YXRpYy96ZmIvc3kxLmpwZ1wiIG1vZGU9J3dpZHRoRml4JyBzdHlsZT1cImhlaWdodDogMzMwcnB4O3otaW5kZXg6IDE7XCIgLz5cclxuXHRcdFx0XHQ8aW1hZ2Ugdi1pZj1cIiFzaG93TW9uZXlGbGFnXCIgc3JjPVwiL3N0YXRpYy96ZmIvc3kyLmpwZ1wiIG1vZGU9J3dpZHRoRml4JyBzdHlsZT1cImhlaWdodDogMTAwcnB4O1wiIEBjbGljaz1cInNob3dNb25leVwiIC8+XHJcblx0XHRcdFx0PHZpZXcgdi1lbHNlIHN0eWxlPVwicG9zaXRpb246IGZpeGVkO3RvcDogMjgwcnB4O2xlZnQ6IDIwMHJweDt6LWluZGV4OiA5OTk5O1wiIEBjbGljaz1cInNob3dNb25leVwiPlxyXG5cdFx0XHRcdFx0PHZpZXc+XHJcblx0XHRcdFx0XHRcdDx0ZXh0IHN0eWxlPVwiY29sb3I6ICNGRkZGRkY7Zm9udC1zaXplOiAxMDBycHg7XCI+e3thbGxNb25leX19PC90ZXh0PlxyXG5cdFx0XHRcdFx0XHQ8aW1hZ2Ugc3JjPVwiL3N0YXRpYy96ZmIvZXllcy5wbmdcIiBtb2RlPVwiYXNwZWN0Rml0XCIgc3R5bGU9XCJ3aWR0aDogMTUwcnB4O3Bvc2l0aW9uOiByZWxhdGl2ZTt0b3A6IC0yNzVycHg7cmlnaHQ6IC0zMDBycHg7ei1pbmRleDo5OTtcIj5cclxuXHRcdFx0XHRcdDwvdmlldz5cclxuXHRcdFx0XHQ8L3ZpZXc+XHJcblx0XHRcdFx0PGltYWdlIHNyYz1cIi9zdGF0aWMvemZiL3N5My5qcGdcIiBtb2RlPSd3aWR0aEZpeCcgc3R5bGU9XCJoZWlnaHQ6IDEyMDBycHg7cG9zaXRpb246IHJlbGF0aXZlO3RvcDogLTI1cnB4O1wiIC8+XHJcblx0XHRcdDwvdmlldz5cclxuXHRcdFx0PHZpZXcgc3R5bGU9XCJwb3NpdGlvbjpyZWxhdGl2ZSA7dG9wOiAtMTIwMHJweDtsZWZ0OiAxODBycHg7XCI+XHJcblx0XHRcdFx0PHRleHQgc3R5bGU9XCJjb2xvcjogI0ZGRkZGRjtmb250LXNpemU6IDI2cnB4O1wiPnt7bmFtZX19PC90ZXh0PlxyXG5cdFx0XHQ8L3ZpZXc+XHJcblx0XHRcdDx2aWV3IHN0eWxlPVwicG9zaXRpb246cmVsYXRpdmUgO3RvcDogLTEyMzBycHg7bGVmdDogMjcwcnB4O1wiPlxyXG5cdFx0XHRcdDx0ZXh0IHN0eWxlPVwiY29sb3I6ICNGRkZGRkY7Zm9udC1zaXplOiAyNnJweDtcIj57e29iajIuYmh9fTwvdGV4dD5cclxuXHRcdFx0PC92aWV3PlxyXG5cdFx0XHQ8dmlldyBzdHlsZT1cInBvc2l0aW9uOnJlbGF0aXZlIDt0b3A6IC0xMDEwcnB4O2xlZnQ6IDY2cnB4O1wiPlxyXG5cdFx0XHRcdDx0ZXh0IHN0eWxlPVwiY29sb3I6ICNhMTlkYTE7Zm9udC1zaXplOiAyM3JweDtcIj7mnIDov5HnvLTlrZh7e2RhdGV9fTwvdGV4dD5cclxuXHRcdFx0PC92aWV3PlxyXG5cdFx0XHQ8dmlldyBzdHlsZT1cInBvc2l0aW9uOnJlbGF0aXZlIDt0b3A6IC0xMDA0cnB4O2xlZnQ6IDY2cnB4O1wiIEBjbGljaz1cIm15TW9uZXlcIj5cclxuXHRcdFx0XHQ8dGV4dCBzdHlsZT1cImNvbG9yOiAjYTE5ZGExO2ZvbnQtc2l6ZTogNDBycHg7XCI+e3ttb25leX19PC90ZXh0PlxyXG5cdFx0XHQ8L3ZpZXc+XHJcblx0XHQ8L3ZpZXc+XHJcblx0XHQ8dmlldyB2LWVsc2U+XHJcblx0XHRcdDxpbWFnZSBzcmM9XCIvc3RhdGljL3pmYi9zeTUuanBnXCIgbW9kZT0nd2lkdGhGaXgnIHN0eWxlPVwiaGVpZ2h0OiAxNjAwcnB4O1wiIEBjbGljaz1cIm15TW9uZXlcIiAvPlxyXG5cdFx0XHQ8dGV4dCBzdHlsZT1cImNvbG9yOiAjRkZGRkZGO3Bvc2l0aW9uOiBmaXhlZDt0b3A6IDExMHJweDtsZWZ0OiAxMDBycHg7XCI+e3tuYW1lfX3nmoTotKbmiLc8L3RleHQ+XHJcblx0XHRcdDx0ZXh0IHN0eWxlPVwiY29sb3I6ICNGRkZGRkY7cG9zaXRpb246IGZpeGVkO3RvcDogMjIwcnB4O2xlZnQ6IDk1cnB4O2ZvbnQtc2l6ZTogNTBycHg7XCI+e3thbGxNb25leX19PC90ZXh0PlxyXG5cdFx0XHQ8dGV4dCBzdHlsZT1cImNvbG9yOiAjRkZGRkZGO3Bvc2l0aW9uOiBmaXhlZDt0b3A6IDIyMHJweDtsZWZ0OiA0NjVycHg7Zm9udC1zaXplOiA1MHJweDtcIj57e2dldE1vbnRoTW9uZXl9fTwvdGV4dD5cclxuXHRcdFx0PHRleHQgc3R5bGU9XCJwb3NpdGlvbjogZml4ZWQ7dG9wOiA1MzBycHg7cmlnaHQ6IDIwcnB4O2ZvbnQtc2l6ZTogMzRycHg7XCI+e3tvYmoyLmJofX08L3RleHQ+XHJcblx0XHRcdDx0ZXh0IHN0eWxlPVwicG9zaXRpb246IGZpeGVkO3RvcDogNjAwcnB4O3JpZ2h0OiAyMHJweDtmb250LXNpemU6IDM0cnB4O1wiPnt7b2JqMi5kd25hbWV9fTwvdGV4dD5cclxuXHRcdFx0PHRleHQgc3R5bGU9XCJwb3NpdGlvbjogZml4ZWQ7dG9wOiA2NzVycHg7cmlnaHQ6IDIwcnB4O2ZvbnQtc2l6ZTogMzRycHg7XCI+e3tvYmoyLm1jfX08L3RleHQ+XHJcblx0XHQ8L3ZpZXc+XHJcblxyXG5cclxuXHJcblx0PC92aWV3PlxyXG5cclxuXHJcblxyXG48L3RlbXBsYXRlPlxyXG48c2NyaXB0PlxyXG5cdGV4cG9ydCBkZWZhdWx0IHtcclxuXHRcdGNvbXBvbmVudHM6IHtcclxuXHJcblx0XHR9LFxyXG5cdFx0b25Mb2FkKCkge1xyXG5cdFx0XHR0aGlzLmlTdGF0dXNCYXJIZWlnaHQgPSB1bmkuZ2V0U3lzdGVtSW5mb1N5bmMoKS5zdGF0dXNCYXJIZWlnaHQ7XHJcblx0XHRcdHVuaS5oaWRlVGFiQmFyKCk7XHJcblx0XHR9LFxyXG5cdFx0ZGF0YSgpIHtcclxuXHRcdFx0cmV0dXJuIHtcclxuXHRcdFx0XHRpU3RhdHVzQmFySGVpZ2h0OiAwLFxyXG5cdFx0XHRcdG5hbWU6ICcq576O5Li5JyxcclxuXHRcdFx0XHRkYXRlOiAnMjAyMC0wNi0zMCcsXHJcblx0XHRcdFx0bW9uZXk6ICcxMjkuNicsXHJcblx0XHRcdFx0YWxsTW9uZXk6ICc5LDc4NS45MicsXHJcblx0XHRcdFx0c2hvd01vbmV5RmxhZzogZmFsc2UsXHJcblx0XHRcdFx0bXlGbGFnOiBmYWxzZSxcclxuXHRcdFx0XHRvYmo6IHtcclxuXHRcdFx0XHRcdGpjanM6ICcyNTAwLjAwJyxcclxuXHRcdFx0XHRcdGdyYmw6ICcxMi4wMCUnLFxyXG5cdFx0XHRcdFx0ZHdibDogJzEyLjAwJScsXHJcblx0XHRcdFx0XHRnck1vbmV5OiAnMzAwLjAwJyxcclxuXHRcdFx0XHRcdGR3TW9uZXk6ICczMDAuMDAnLFxyXG5cdFx0XHRcdFx0c246ICc5ODU2LjIzJyxcclxuXHRcdFx0XHRcdGJuOiAnMC4wMCcsXHJcblx0XHRcdFx0XHRibjI6ICcwLjAwJyxcclxuXHRcdFx0XHR9LFxyXG5cdFx0XHRcdG9iajI6e1xyXG5cdFx0XHRcdFx0Ymg6J0dKSkpKSkpKMDAwMDAwMDAwMDAxNzI1NScsXHJcblx0XHRcdFx0XHRkd25hbWU6J3h4eHh4eHjmnInpmZDlhazlj7gnLFxyXG5cdFx0XHRcdFx0bWM6J+acnemYs+euoeeQhumDqCdcclxuXHRcdFx0XHRcdFxyXG5cdFx0XHRcdH1cclxuXHRcdFx0fVxyXG5cdFx0fSxcclxuXHRcdGZpbHRlcnM6IHtcclxuXHJcblx0XHR9LFxyXG5cdFx0Y29tcHV0ZWQ6IHtcclxuXHRcdFx0Z2V0TW9udGhNb25leSgpIHtcclxuXHRcdFx0XHRyZXR1cm4gKHBhcnNlRmxvYXQodGhpcy5vYmouZ3JNb25leSkgKyBwYXJzZUZsb2F0KHRoaXMub2JqLmR3TW9uZXkpKS50b0ZpeGVkKDIpO1xyXG5cdFx0XHR9XHJcblx0XHR9LFxyXG5cdFx0bWV0aG9kczoge1xyXG5cdFx0XHRzaG93TW9uZXkoKSB7XHJcblx0XHRcdFx0dGhpcy5zaG93TW9uZXlGbGFnID0gIXRoaXMuc2hvd01vbmV5RmxhZztcclxuXHJcblx0XHRcdH0sXHJcblx0XHRcdG15TW9uZXkoKSB7XHJcblx0XHRcdFx0dGhpcy5teUZsYWcgPSAhdGhpcy5teUZsYWc7XHJcblxyXG5cdFx0XHR9XHJcblxyXG5cclxuXHJcblx0XHR9XHJcblx0fTtcclxuPC9zY3JpcHQ+XHJcblxyXG48c3R5bGU+XHJcblx0QGltcG9ydCAnLi4vLi4vLi4vY29tbW9uL3VuaS1udnVlLmNzcyc7XHJcbjwvc3R5bGU+XG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///74\n");
+eval("Object.defineProperty(exports, \"__esModule\", { value: true });exports.default = void 0; //\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\nvar _default =\n{\n  components: {},\n\n\n  onLoad: function onLoad() {\n    this.iStatusBarHeight = uni.getSystemInfoSync().statusBarHeight;\n    uni.hideTabBar();\n  },\n  data: function data() {\n    return {\n      iStatusBarHeight: 0,\n      name: '*美丹',\n      date: '2020-06-30',\n      money: '129.6',\n      allMoney: '9,785.92',\n      myFlag: true,\n      showMoneyFlag: false,\n      mxFlag: false,\n      myMoneyFlag: false,\n      obj: {\n        jcjs: '2500.00',\n        grbl: '12.00%',\n        dwbl: '12.00%',\n        grMoney: '300.00',\n        dwMoney: '300.00',\n        sn: '9856.23',\n        bn: '0.00',\n        bn2: '0.00' },\n\n      obj2: {\n        bh: 'GJJJJJJJ0000000000017255',\n        dwname: 'xxxxxxx有限公司',\n        mc: '朝阳管理部',\n        jcsalc: '2500.00',\n        grbl: '12.00%',\n        dwbl: '12.00%',\n        gryjce: '300.00',\n        dwyjce: '300.00',\n        snjze: '9785.92',\n        bnjce: '0.00',\n        bnzqe: '0.00' } };\n\n\n\n  },\n  filters: {\n    filterMoney: function filterMoney(val) {\n      return parseFloat(val).toFixed(2);\n    } },\n\n\n  computed: {\n    getMonthMoney: function getMonthMoney() {\n      return (parseFloat(this.obj.grMoney) + parseFloat(this.obj.dwMoney)).toFixed(2);\n    } },\n\n  methods: {\n    showMoney: function showMoney() {\n      this.showMoneyFlag = !this.showMoneyFlag;\n\n    },\n    myMoney: function myMoney() {\n      this.myFlag = true;\n      this.mxFlag = false;\n      this.myMoneyFlag = false;\n    },\n    ckzhxx: function ckzhxx() {\n      this.myFlag = false;\n      this.mxFlag = false;\n      this.myMoneyFlag = true;\n    },\n    gejcxx: function gejcxx() {\n      this.myFlag = false;\n      this.mxFlag = true;\n      this.myMoneyFlag = false;\n    } } };exports.default = _default;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVuaS1hcHA6Ly8vcGFnZXMvdGFiQmFyL0FQSS9BUEkubnZ1ZSJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBdURBO0FBQ0EsZ0JBREE7OztBQUlBLFFBSkEsb0JBSUE7QUFDQTtBQUNBO0FBQ0EsR0FQQTtBQVFBLE1BUkEsa0JBUUE7QUFDQTtBQUNBLHlCQURBO0FBRUEsaUJBRkE7QUFHQSx3QkFIQTtBQUlBLG9CQUpBO0FBS0EsMEJBTEE7QUFNQSxrQkFOQTtBQU9BLDBCQVBBO0FBUUEsbUJBUkE7QUFTQSx3QkFUQTtBQVVBO0FBQ0EsdUJBREE7QUFFQSxzQkFGQTtBQUdBLHNCQUhBO0FBSUEseUJBSkE7QUFLQSx5QkFMQTtBQU1BLHFCQU5BO0FBT0Esa0JBUEE7QUFRQSxtQkFSQSxFQVZBOztBQW9CQTtBQUNBLHNDQURBO0FBRUEsNkJBRkE7QUFHQSxtQkFIQTtBQUlBLHlCQUpBO0FBS0Esc0JBTEE7QUFNQSxzQkFOQTtBQU9BLHdCQVBBO0FBUUEsd0JBUkE7QUFTQSx3QkFUQTtBQVVBLHFCQVZBO0FBV0EscUJBWEEsRUFwQkE7Ozs7QUFtQ0EsR0E1Q0E7QUE2Q0E7QUFDQSxlQURBLHVCQUNBLEdBREEsRUFDQTtBQUNBO0FBQ0EsS0FIQSxFQTdDQTs7O0FBbURBO0FBQ0EsaUJBREEsMkJBQ0E7QUFDQTtBQUNBLEtBSEEsRUFuREE7O0FBd0RBO0FBQ0EsYUFEQSx1QkFDQTtBQUNBOztBQUVBLEtBSkE7QUFLQSxXQUxBLHFCQUtBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsS0FUQTtBQVVBLFVBVkEsb0JBVUE7QUFDQTtBQUNBO0FBQ0E7QUFDQSxLQWRBO0FBZUEsVUFmQSxvQkFlQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLEtBbkJBLEVBeERBLEUiLCJmaWxlIjoiNzQuanMiLCJzb3VyY2VzQ29udGVudCI6WyI8dGVtcGxhdGU+XHJcblx0PHZpZXcgc3R5bGU9XCJ6LWluZGV4OiAxO3dpZHRoOjEwMCU7aGVpZ2h0OjEwMHZoXCI+XHJcblx0XHQ8dmlldyA6c3R5bGU9XCJ7IGhlaWdodDogaVN0YXR1c0JhckhlaWdodCArICdweCd9XCIgc3R5bGU9XCJiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwMDAwO1wiPjwvdmlldz5cclxuXHRcdDx2aWV3IHYtaWY9XCJteUZsYWdcIj5cclxuXHRcdFx0PHZpZXcgc3R5bGU9XCJ6LWluZGV4OiAxO2JhY2tncm91bmQtY29sb3I6ICMyY2EzZmQ7XCI+XHJcblx0XHRcdFx0PGltYWdlIHYtaWY9XCIhc2hvd01vbmV5RmxhZ1wiIHNyYz1cIi9zdGF0aWMvemZiL2hpZGVtb25leS5qcGdcIiBtb2RlPSd3aWR0aEZpeCcgQGNsaWNrPVwic2hvd01vbmV5XCIgc3R5bGU9XCJoZWlnaHQ6IDMzMHJweDtcIi8+XHJcblx0XHRcdFx0PGltYWdlIHYtaWY9XCJzaG93TW9uZXlGbGFnXCIgc3JjPVwiL3N0YXRpYy96ZmIvc3kxLmpwZ1wiIG1vZGU9J3dpZHRoRml4JyBzdHlsZT1cImhlaWdodDogMzMwcnB4O1wiIC8+XHJcblx0XHRcdFx0PHZpZXcgdi1pZj1cInNob3dNb25leUZsYWdcIiBjbGFzcz1cInpmYi1zaG93bW9uZXlcIiBAY2xpY2s9XCJzaG93TW9uZXlcIiA+XHJcblx0XHRcdFx0XHQ8dmlldz5cclxuXHRcdFx0XHRcdFx0PHRleHQgc3R5bGU9XCJjb2xvcjogI0ZGRkZGRjtmb250LXNpemU6IDEwMHJweDtcIj57e2FsbE1vbmV5fX08L3RleHQ+XHJcblx0XHRcdFx0XHRcdDxpbWFnZSBzcmM9XCIvc3RhdGljL3pmYi9leWVzLnBuZ1wiIG1vZGU9XCJhc3BlY3RGaXRcIiBjbGFzcz1cInpmYi1zaG93bW9uZXktaW1hZ2VcIiAvPlxyXG5cdFx0XHRcdFx0PC92aWV3PlxyXG5cdFx0XHRcdDwvdmlldz5cclxuXHRcdFx0XHQ8aW1hZ2Ugc3JjPVwiL3N0YXRpYy96ZmIvc3kzLmpwZ1wiIG1vZGU9J3dpZHRoRml4JyBzdHlsZT1cImhlaWdodDogMTIwMHJweDtwb3NpdGlvbjogcmVsYXRpdmU7dG9wOiAtMjVycHg7XCIgQGNsaWNrPVwiY2t6aHh4XCIgLz5cclxuXHRcdFx0PC92aWV3PlxyXG5cdFx0XHQ8dmlldyBzdHlsZT1cInBvc2l0aW9uOnJlbGF0aXZlIDt0b3A6IC0xMjI1cnB4O2xlZnQ6IDE4MHJweDtcIj5cclxuXHRcdFx0XHQ8dGV4dCBzdHlsZT1cImNvbG9yOiAjRkZGRkZGO2ZvbnQtc2l6ZTogMjZycHg7XCI+e3tuYW1lfX08L3RleHQ+XHJcblx0XHRcdDwvdmlldz5cclxuXHRcdFx0PHZpZXcgc3R5bGU9XCJwb3NpdGlvbjpyZWxhdGl2ZSA7dG9wOiAtMTI1M3JweDtsZWZ0OiAyNzBycHg7XCI+XHJcblx0XHRcdFx0PHRleHQgc3R5bGU9XCJjb2xvcjogI0ZGRkZGRjtmb250LXNpemU6IDI2cnB4O1wiPnt7b2JqMi5iaH19PC90ZXh0PlxyXG5cdFx0XHQ8L3ZpZXc+XHJcblx0XHRcdDx2aWV3IHN0eWxlPVwicG9zaXRpb246cmVsYXRpdmUgO3RvcDogLTEwMjVycHg7bGVmdDogNjZycHg7XCI+XHJcblx0XHRcdFx0PHRleHQgc3R5bGU9XCJjb2xvcjogI2ExOWRhMTtmb250LXNpemU6IDIzcnB4O1wiPuacgOi/kee8tOWtmHt7ZGF0ZX19PC90ZXh0PlxyXG5cdFx0XHQ8L3ZpZXc+XHJcblx0XHRcdDx2aWV3IHN0eWxlPVwicG9zaXRpb246cmVsYXRpdmUgO3RvcDogLTEwMTdycHg7bGVmdDogNjZycHg7XCIgQGNsaWNrPVwiZ2VqY3h4XCI+XHJcblx0XHRcdFx0PHRleHQgc3R5bGU9XCJjb2xvcjogI2ExOWRhMTtmb250LXNpemU6IDQwcnB4O1wiPnt7bW9uZXl9fTwvdGV4dD5cclxuXHRcdFx0PC92aWV3PlxyXG5cdFx0PC92aWV3PlxyXG5cdFx0PHZpZXcgdi1pZj1cIm15TW9uZXlGbGFnXCI+XHJcblx0XHRcdDxpbWFnZSBzcmM9XCIvc3RhdGljL3pmYi9zeTUuanBnXCIgbW9kZT0nd2lkdGhGaXgnIHN0eWxlPVwiaGVpZ2h0OiAxNjAwcnB4O1wiIEBjbGljaz1cIm15TW9uZXlcIiAvPlxyXG5cdFx0XHQ8dGV4dCBzdHlsZT1cImNvbG9yOiAjRkZGRkZGO3Bvc2l0aW9uOiBmaXhlZDt0b3A6IDExMHJweDtsZWZ0OiAxMDBycHg7XCI+e3tuYW1lfX3nmoTotKbmiLc8L3RleHQ+XHJcblx0XHRcdDx0ZXh0IHN0eWxlPVwiY29sb3I6ICNGRkZGRkY7cG9zaXRpb246IGZpeGVkO3RvcDogMjIwcnB4O2xlZnQ6IDk1cnB4O2ZvbnQtc2l6ZTogNTBycHg7XCI+e3thbGxNb25leX19PC90ZXh0PlxyXG5cdFx0XHQ8dGV4dCBzdHlsZT1cImNvbG9yOiAjRkZGRkZGO3Bvc2l0aW9uOiBmaXhlZDt0b3A6IDIyMHJweDtsZWZ0OiA0NjVycHg7Zm9udC1zaXplOiA1MHJweDtcIj57e3BhcnNlRmxvYXQob2JqMi5ncnlqY2UpICsgcGFyc2VGbG9hdChvYmoyLmR3eWpjZSkgfCBmaWx0ZXJNb25leX19PC90ZXh0PlxyXG5cdFx0XHQ8dGV4dCBzdHlsZT1cInBvc2l0aW9uOiBmaXhlZDt0b3A6IDUxN3JweDtyaWdodDogMjBycHg7Zm9udC1zaXplOiAzNHJweDtcIj57e29iajIuYmh9fTwvdGV4dD5cclxuXHRcdFx0PHRleHQgc3R5bGU9XCJwb3NpdGlvbjogZml4ZWQ7dG9wOiA1ODVycHg7cmlnaHQ6IDIwcnB4O2ZvbnQtc2l6ZTogMzRycHg7XCI+e3tvYmoyLmR3bmFtZX19PC90ZXh0PlxyXG5cdFx0XHQ8dGV4dCBzdHlsZT1cInBvc2l0aW9uOiBmaXhlZDt0b3A6IDY1N3JweDtyaWdodDogMjBycHg7Zm9udC1zaXplOiAzNHJweDtcIj57e29iajIubWN9fTwvdGV4dD5cclxuXHRcdFx0PHRleHQgc3R5bGU9XCJwb3NpdGlvbjogZml4ZWQ7dG9wOiA4NTVycHg7cmlnaHQ6IDIwcnB4O2ZvbnQtc2l6ZTogMzRycHg7XCI+e3tvYmoyLmpjc2FsYyB8IGZpbHRlck1vbmV5fX08L3RleHQ+XHJcblx0XHRcdDx0ZXh0IHN0eWxlPVwicG9zaXRpb246IGZpeGVkO3RvcDogOTIwcnB4O3JpZ2h0OiAyMHJweDtmb250LXNpemU6IDM0cnB4O1wiPnt7b2JqMi5ncmJsfX08L3RleHQ+XHJcblx0XHRcdDx0ZXh0IHN0eWxlPVwicG9zaXRpb246IGZpeGVkO3RvcDogOTg1cnB4O3JpZ2h0OiAyMHJweDtmb250LXNpemU6IDM0cnB4O1wiPnt7b2JqMi5kd2JsfX08L3RleHQ+XHJcblx0XHRcdDx0ZXh0IHN0eWxlPVwicG9zaXRpb246IGZpeGVkO3RvcDogMTA1N3JweDtyaWdodDogMjBycHg7Zm9udC1zaXplOiAzNHJweDtcIj57e29iajIuZ3J5amNlIHwgZmlsdGVyTW9uZXl9fTwvdGV4dD5cclxuXHRcdFx0PHRleHQgc3R5bGU9XCJwb3NpdGlvbjogZml4ZWQ7dG9wOiAxMTI3cnB4O3JpZ2h0OiAyMHJweDtmb250LXNpemU6IDM0cnB4O1wiPnt7b2JqMi5kd3lqY2UgfCBmaWx0ZXJNb25leX19PC90ZXh0PlxyXG5cdFx0XHQ8dGV4dCBzdHlsZT1cInBvc2l0aW9uOiBmaXhlZDt0b3A6IDExOTVycHg7cmlnaHQ6IDIwcnB4O2ZvbnQtc2l6ZTogMzRycHg7XCI+e3tvYmoyLnNuanplIHwgZmlsdGVyTW9uZXl9fTwvdGV4dD5cclxuXHRcdFx0PHRleHQgc3R5bGU9XCJwb3NpdGlvbjogZml4ZWQ7dG9wOiAxMjY1cnB4O3JpZ2h0OiAyMHJweDtmb250LXNpemU6IDM0cnB4O1wiPnt7b2JqMi5ibmpjZSB8IGZpbHRlck1vbmV5fX08L3RleHQ+XHJcblx0XHRcdDx0ZXh0IHN0eWxlPVwicG9zaXRpb246IGZpeGVkO3RvcDogMTMzNXJweDtyaWdodDogMjBycHg7Zm9udC1zaXplOiAzNHJweDtcIj57e29iajIuYm56cWUgfCBmaWx0ZXJNb25leX19PC90ZXh0PlxyXG5cdFx0PC92aWV3PlxyXG5cdFx0PHZpZXcgdi1pZj1cIm14RmxhZ1wiPlxyXG5cdFx0XHQ8aW1hZ2Ugc3JjPVwiL3N0YXRpYy96ZmIvbXgxLmpwZ1wiIG1vZGU9J3dpZHRoRml4JyBAY2xpY2s9XCJteU1vbmV5XCIgc3R5bGU9XCJoZWlnaHQ6IDMwMHJweDtcIi8+XHJcblx0XHQ8L3ZpZXc+XHJcblxyXG5cdDwvdmlldz5cclxuXHJcblxyXG5cclxuPC90ZW1wbGF0ZT5cclxuPHNjcmlwdD5cclxuXHRleHBvcnQgZGVmYXVsdCB7XHJcblx0XHRjb21wb25lbnRzOiB7XHJcblxyXG5cdFx0fSxcclxuXHRcdG9uTG9hZCgpIHtcclxuXHRcdFx0dGhpcy5pU3RhdHVzQmFySGVpZ2h0ID0gdW5pLmdldFN5c3RlbUluZm9TeW5jKCkuc3RhdHVzQmFySGVpZ2h0O1xyXG5cdFx0XHR1bmkuaGlkZVRhYkJhcigpO1xyXG5cdFx0fSxcclxuXHRcdGRhdGEoKSB7XHJcblx0XHRcdHJldHVybiB7XHJcblx0XHRcdFx0aVN0YXR1c0JhckhlaWdodDogMCxcclxuXHRcdFx0XHRuYW1lOiAnKue+juS4uScsXHJcblx0XHRcdFx0ZGF0ZTogJzIwMjAtMDYtMzAnLFxyXG5cdFx0XHRcdG1vbmV5OiAnMTI5LjYnLFxyXG5cdFx0XHRcdGFsbE1vbmV5OiAnOSw3ODUuOTInLFxyXG5cdFx0XHRcdG15RmxhZzogdHJ1ZSxcclxuXHRcdFx0XHRzaG93TW9uZXlGbGFnOiBmYWxzZSxcclxuXHRcdFx0XHRteEZsYWc6ZmFsc2UsXHJcblx0XHRcdFx0bXlNb25leUZsYWc6ZmFsc2UsXHJcblx0XHRcdFx0b2JqOiB7XHJcblx0XHRcdFx0XHRqY2pzOiAnMjUwMC4wMCcsXHJcblx0XHRcdFx0XHRncmJsOiAnMTIuMDAlJyxcclxuXHRcdFx0XHRcdGR3Ymw6ICcxMi4wMCUnLFxyXG5cdFx0XHRcdFx0Z3JNb25leTogJzMwMC4wMCcsXHJcblx0XHRcdFx0XHRkd01vbmV5OiAnMzAwLjAwJyxcclxuXHRcdFx0XHRcdHNuOiAnOTg1Ni4yMycsXHJcblx0XHRcdFx0XHRibjogJzAuMDAnLFxyXG5cdFx0XHRcdFx0Ym4yOiAnMC4wMCcsXHJcblx0XHRcdFx0fSxcclxuXHRcdFx0XHRvYmoyOiB7XHJcblx0XHRcdFx0XHRiaDogJ0dKSkpKSkpKMDAwMDAwMDAwMDAxNzI1NScsXHJcblx0XHRcdFx0XHRkd25hbWU6ICd4eHh4eHh45pyJ6ZmQ5YWs5Y+4JyxcclxuXHRcdFx0XHRcdG1jOiAn5pyd6Ziz566h55CG6YOoJyxcclxuXHRcdFx0XHRcdGpjc2FsYzonMjUwMC4wMCcsXHJcblx0XHRcdFx0XHRncmJsOicxMi4wMCUnLFxyXG5cdFx0XHRcdFx0ZHdibDonMTIuMDAlJyxcclxuXHRcdFx0XHRcdGdyeWpjZTonMzAwLjAwJyxcclxuXHRcdFx0XHRcdGR3eWpjZTonMzAwLjAwJyxcclxuXHRcdFx0XHRcdHNuanplOic5Nzg1LjkyJyxcclxuXHRcdFx0XHRcdGJuamNlOicwLjAwJyxcclxuXHRcdFx0XHRcdGJuenFlOicwLjAwJyxcclxuXHJcblx0XHRcdFx0fVxyXG5cdFx0XHR9XHJcblx0XHR9LFxyXG5cdFx0ZmlsdGVyczoge1xyXG5cdFx0XHRmaWx0ZXJNb25leSh2YWwpe1xyXG5cdFx0XHRcdHJldHVybiBwYXJzZUZsb2F0KHZhbCkudG9GaXhlZCgyKTtcclxuXHRcdFx0fVxyXG5cclxuXHRcdH0sXHJcblx0XHRjb21wdXRlZDoge1xyXG5cdFx0XHRnZXRNb250aE1vbmV5KCkge1xyXG5cdFx0XHRcdHJldHVybiAocGFyc2VGbG9hdCh0aGlzLm9iai5nck1vbmV5KSArIHBhcnNlRmxvYXQodGhpcy5vYmouZHdNb25leSkpLnRvRml4ZWQoMik7XHJcblx0XHRcdH1cclxuXHRcdH0sXHJcblx0XHRtZXRob2RzOiB7XHJcblx0XHRcdHNob3dNb25leSgpIHtcclxuXHRcdFx0XHR0aGlzLnNob3dNb25leUZsYWcgPSAhdGhpcy5zaG93TW9uZXlGbGFnO1xyXG5cclxuXHRcdFx0fSxcclxuXHRcdFx0bXlNb25leSgpIHtcclxuXHRcdFx0XHR0aGlzLm15RmxhZyA9IHRydWU7XHJcblx0XHRcdFx0dGhpcy5teEZsYWcgPSBmYWxzZTtcclxuXHRcdFx0XHR0aGlzLm15TW9uZXlGbGFnID0gZmFsc2U7XHJcblx0XHRcdH0sXHJcblx0XHRcdGNremh4eCgpe1xyXG5cdFx0XHRcdHRoaXMubXlGbGFnID0gZmFsc2U7XHJcblx0XHRcdFx0dGhpcy5teEZsYWcgPSBmYWxzZTtcclxuXHRcdFx0XHR0aGlzLm15TW9uZXlGbGFnID0gdHJ1ZTtcclxuXHRcdFx0fSxcclxuXHRcdFx0Z2VqY3h4KCl7XHJcblx0XHRcdFx0dGhpcy5teUZsYWcgPSBmYWxzZTtcclxuXHRcdFx0XHR0aGlzLm14RmxhZyA9IHRydWU7XHJcblx0XHRcdFx0dGhpcy5teU1vbmV5RmxhZyA9IGZhbHNlO1xyXG5cdFx0XHR9XHJcblxyXG5cclxuXHJcblx0XHR9XHJcblx0fTtcclxuPC9zY3JpcHQ+XHJcblxyXG48c3R5bGU+XHJcblx0QGltcG9ydCAnLi4vLi4vLi4vY29tbW9uL3VuaS1udnVlLmNzcyc7XHJcblxyXG5cdC56ZmItc2hvd21vbmV5IHtcclxuXHRcdHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuXHRcdHRvcDogMjAwcnB4O1xyXG5cdFx0bGVmdDogMTgwcnB4O1xyXG5cdFx0d2lkdGg6IDEwMDBweDtcclxuXHRcdHotaW5kZXg6IDk5OTtcclxuXHR9XHJcblxyXG5cdC56ZmItc2hvd21vbmV5LWltYWdlIHtcclxuXHRcdHdpZHRoOiAxNTBycHg7XHJcblx0XHRwb3NpdGlvbjogYWJzb2x1dGU7XHJcblx0XHR0b3A6IC0xNjVycHg7XHJcblx0XHRsZWZ0OiAzNTBycHg7XHJcblx0XHR6LWluZGV4OiAxMDAwO1xyXG5cdH1cclxuXHJcbjwvc3R5bGU+XG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///74\n");
 
 /***/ }),
 
@@ -592,6 +718,20 @@ module.exports = {
     "color": "#999999",
     "fontSize": "14",
     "fontWeight": "normal"
+  },
+  "zfb-showmoney": {
+    "position": "absolute",
+    "top": "200rpx",
+    "left": "180rpx",
+    "width": "1000",
+    "zIndex": 999
+  },
+  "zfb-showmoney-image": {
+    "width": "150rpx",
+    "position": "absolute",
+    "top": "-165rpx",
+    "left": "350rpx",
+    "zIndex": 1000
   }
 }
 
