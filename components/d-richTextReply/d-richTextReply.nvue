@@ -1,0 +1,72 @@
+<template>
+	<view>
+		<rich-text :nodes="richNodes"></rich-text>
+	</view>
+</template>
+
+<script>
+	export default {
+		name: "d-richTextReply",
+		data() {
+			return {
+				
+			}
+		},
+		props: {
+			// 父元素信息
+			fatherObject: {
+				type: [Object], 
+				default: function() {
+					return {
+						name: 'span'
+					}
+				}
+			},
+			// 子元素列表
+			sonList: {
+				type: [Array],
+				default: function() {
+					return []
+				}
+			}
+		},
+		computed: {
+			richNodes () {
+				var father = this.fatherObject;
+				var nodes =  {
+					name: father.name || 'span',
+					attrs: {
+						style: this.formatStyle(father.styleObject || {}) 
+					},
+					children: []
+				}
+				var childrenList = this.sonList.map(item=>{
+					return {
+						name: item.name || 'span',
+						attrs: {
+							style: this.formatStyle(item.styleObject || {}) 
+						},
+						children:[{
+							type: 'text',
+							text: item.text || '',
+						}]
+					}
+				})
+				nodes.children = childrenList;
+				return [nodes];
+			}
+		},
+		methods: {
+			formatStyle (action) {
+				var str = ""; 
+				for(var key in  action) {
+					str+= `${key}:${action[key]};`
+				}
+				return str;
+			}
+		}
+	}
+</script>
+
+<style>
+</style>

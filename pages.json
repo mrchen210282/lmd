@@ -16,7 +16,7 @@
 		{
 			"path": "pages/tabBar/component/component",
 			"style": {
-				"navigationBarTitleText": "办税",
+				"navigationBarTitleText": "信息填写",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [{
@@ -26,31 +26,6 @@
 							"color": "#FFFFFF"
 						}]
 					}
-				}
-			}
-		},
-		{
-			"path": "pages/tabBar/template/template",
-			"style": {
-				"navigationBarTitleText": "服务",
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"text": "\ue534",
-							"fontSrc": "/static/uni.ttf",
-							"fontSize": "22px",
-							"color": "#FFFFFF"
-						}]
-					}
-				}
-			}
-		},
-		{
-			"path": "pages/tabBar/extUI/extUI",
-			"style": {
-				"navigationBarTitleText": "个人中心",
-				"app-plus": {
-					"titleNView": false
 				}
 			}
 		}
@@ -83,17 +58,7 @@
 				"pagePath": "pages/tabBar/component/component",
 				"iconPath": "static/bs2.png",
 				"selectedIconPath": "static/bs.png",
-				"text": "办税"
-			}, {
-				"pagePath": "pages/tabBar/template/template",
-				"iconPath": "static/fw.png",
-				"selectedIconPath": "static/fw2.png",
-				"text": "服务"
-			}, {
-				"pagePath": "pages/tabBar/extUI/extUI",
-				"iconPath": "static/grzx.png",
-				"selectedIconPath": "static/grzx2.png",
-				"text": "个人中心"
+				"text": "信息填写"
 			}
 		]
 	}

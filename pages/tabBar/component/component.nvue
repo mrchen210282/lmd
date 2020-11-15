@@ -1,52 +1,138 @@
 <template>
 	<view class="uni-container" style="font-size: 12rpx;">
-		<view class="uni-title uni-common-pl" style="font-size: 12rpx;">税务信息填写</view>
-		<view class="uni-list" v-for="(item,index) in datas">
-			<picker mode='date' fields='month' @change="openCanlan(index,$event)">
-				<text>月份:{{item.zxDate}}</text>
-			</picker>
+		<view class="uni-title uni-common-pl" style="font-size: 12rpx;">统计信息信息填写</view>
+		<button @click="jbxxFlag = !jbxxFlag">基本信息控制</button>
+		<view v-if="jbxxFlag">
+			<text>基本信息填写</text>
 			<view style="margin-top: 10rpx;">
-				<text>所得项目小类:</text>
-				<input type='text' v-model="item.sdlxx" class='uni-input' />
+				<text>名字(输入带入*号的):</text>
+				<input type='text' v-model="obj.name" class='uni-input' />
 			</view>
-			<view>
-				<text>扣缴义务人:</text>
-				<input type='text' v-model="item.kjywr" class='uni-input' />
+			<view style="margin-top: 10rpx;">
+				<text>个人账号:</text>
+				<input type='text' v-model="obj.bh" class='uni-input' />
 			</view>
-			<view>
-				<text>收入:</text>
-				<input type='digit' v-model="item.sr" class='uni-input' placeholder="小数点需要自己输入" />
+			<view style="margin-top: 10rpx;">
+				<text>账户余额:</text>
+				<input type='text' v-model="obj.zhye" class='uni-input' />
 			</view>
-			<view>
-				<text>已申报税额:</text>
-				<input type='digit' v-model="item.ysb" class='uni-input' placeholder="小数点需要自己输入" />
+			<view style="margin-top: 10rpx;">
+				<text>最近缴存时间:</text>
+				<input type='text' v-model="obj.zjjcDate" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>最近缴存金额:</text>
+				<input type='text' v-model="obj.zjjcMoney" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>缴存单位:</text>
+				<input type='text' v-model="obj.dwname" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>所属管理部名称:</text>
+				<input type='text' v-model="obj.glbmname" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>缴存基数:</text>
+				<input type='text' v-model="obj.jcjs" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>个人比例:</text>
+				<input type='text' v-model="obj.grbl" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>单位比例:</text>
+				<input type='text' v-model="obj.dwbl" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>个人月缴存额:</text>
+				<input type='text' v-model="obj.gryjce" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>单位月缴存额:</text>
+				<input type='text' v-model="obj.dwyjce" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>上年结转额:</text>
+				<input type='text' v-model="obj.snzje" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>本年结转额:</text>
+				<input type='text' v-model="obj.bnzje" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>本年支取额:</text>
+				<input type='text' v-model="obj.bnzqe" class='uni-input' />
 			</view>
 		</view>
-		<button style="width: 100rpx;" @click="save">保存</button>
-		<button style="width: 200rpx;" @click="addFnc">继续添加</button>
-		<button style="width: 200rpx;" @click="removeFnc">移除</button>
+		<view class="uni-list" v-for="(item,index) in datas">
+			<view style="margin-top: 10rpx;">
+				<text>年份:</text>
+				<input type='text' v-model="item.years" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>日期:</text>
+				<input type='text' v-model="item.dates" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>年度结息/汇缴分配:</text>
+				<input type='text' v-model="item.type" class='uni-input' />
+			</view>
+			<view style="margin-top: 10rpx;">
+				<text>金额:</text>
+				<input type='text' v-model="item.money" class='uni-input' />
+			</view>
+		</view>
+		<button @click="save">保存</button>
+		<button @click="addFnc">继续添加</button>
+		<button @click="removeFnc">移除</button>
 	</view>
 </template>
 <script>
 	export default {
 		data() {
 			return {
+				jbxxFlag:true,
 				time: '',
 				index: 0,
 				datas: [{
-					zxDate: '2020-09',
-					sdlxx: '正常工资薪金',
-					kjywr: '',
-					sr: '0',
-					ysb: '0'
-				}]
+					years: '2020',
+					dates: '11-15',
+					type: '汇缴分配',
+					money: '600',
+				}],
+				obj: {
+					name: '*美丹',
+					bh: 'GJJJJJJJ0000000000017255',
+					zhye:'6666',
+					zjjcDate:'2020-06-08',
+					zjjcMoney:'3333',
+					dwname: '',
+					glbmname: '',
+					jcjs: '',
+					grbl: '12.00%',
+					dwbl: '12.00%',
+					gryjce: '',
+					dwyjce: '',
+					snzje: '',
+					bnzje: '',
+					bnzqe: ''
+
+				}
 
 
 			}
 		},
-		onShow(){
+		onShow() {
 			uni.getStorage({
-				key: 'storage_key',
+				key: 'jbxx',
+				success: (res) => {
+					this.obj = res.data
+					console.log(res.data);
+				}
+			});
+			uni.getStorage({
+				key: 'mxxx',
 				success: (res) => {
 					this.datas = res.data
 					console.log(res.data);
@@ -54,34 +140,38 @@
 			});
 		},
 		methods: {
-			openCanlan(...e) {
-				this.datas[e[0]].zxDate = e[1].detail.value
-			},
+
 			addFnc() {
 				let item = {
-					zxDate: '2020-09',
-					sdlxx: '正常工资薪金',
-					kjywr: '',
-					sr: '',
-					ysb: ''
+					years: '2020',
+					dates: '',
+					type: '汇缴分配',
+					money: '',
 				};
 				this.datas.push(item);
 			},
 			save() {
 				uni.setStorage({
-					key: 'storage_key',
+					key: 'mxxx',
 					data: this.datas,
 					success: function() {
 						console.log('success');
 					}
 				});
+				uni.setStorage({
+					key: 'jbxx',
+					data: this.obj,
+					success: function() {
+						console.log('success');
+					}
+				});
 			},
-			removeFnc(){
-				if(this.datas.length>1){
-					 this.datas.pop();
-					 this.save();
+			removeFnc() {
+				if (this.datas.length > 1) {
+					this.datas.pop();
+					this.save();
 				}
-				
+
 			}
 
 		}
